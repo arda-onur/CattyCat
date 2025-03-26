@@ -41,7 +41,7 @@ export default function LoginPage() {
 
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start relative bg-gradient-to-br from-white to-orange-400">
+        <div className=" bg-full-image min-h-screen flex flex-col items-center justify-start relative bg-gradient-to-br from-white to-orange-400">
             <img
                 src="kedilogo.png"
                 alt="Leylek"
