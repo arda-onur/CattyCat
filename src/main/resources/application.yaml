@@ -1,1 +1,24 @@
-spring.application.name=cattycat
+spring:
+  security:
+    user:
+      password: 123456
+      name: ardaonur
+  application:
+    name: CattyCat
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/cattydb}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USERNAME:admin
+    password: ${DATABASE_PASSWORD:admin123}
+  jpa:
+    generate-ddl: false
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: cattycat
+  flyway:
+    schemas: cattycat
+    baseline-on-migrate: true
+    table: flyway_schema_history
