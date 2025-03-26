@@ -1,18 +1,18 @@
 
 "use client";
 
+import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import { useState } from "react";
 
 export default function LoginPage() {
 
     const [email, setEmail] = useState("");
-    const [sifre, setSifre] = useState("");
-    const [mesaj, setMesaj] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
-    const resimler = [
+    const images = [
         "erkekmavilogin.jpg",
         "kadınssiyahayakkabı.jpg",
         "siyaherkeklogin.png",
@@ -27,15 +27,15 @@ export default function LoginPage() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     email: email,
-                    password: sifre,
+                    password: password,
                 }),
             });
 
             const result = await response.text();
-            setMesaj(result);
+            setMessage(result);
         } catch (err) {
-            console.error("Hata:", err);
-            setMesaj("Sunucuya bağlanılamadı.");
+            console.error("Error:", err);
+            setMessage("Failed to connect to the server.");
         }
     };
 
@@ -61,7 +61,7 @@ export default function LoginPage() {
                     speed={10000}
                     freeMode={true}
                 >
-                    {resimler.map((src, i) => (
+                    {images.map((src, i) => (
                         <SwiperSlide key={i}>
                             <img
                                 src={`/${src}`}
@@ -76,12 +76,12 @@ export default function LoginPage() {
 
             <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8 mt-8">
                 <h2 className="text-2xl font-bold text-center text-orange-600">
-                    Giriş Yap
+                    Login
                 </h2>
                 <form className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
-                            E-posta
+                            E-mail
                         </label>
                         <input
                             type="email"
@@ -93,25 +93,25 @@ export default function LoginPage() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
-                            Şifre
+                            Password
                         </label>
                         <input
                             type="password"
                             className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:accent-orange-600"
-                            value={sifre}
-                            onChange={(e) => setSifre(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             placeholder="********"
                         />
                     </div>
                     <button type="button" onClick={handleLogin}
                           className="w-full accent-orange-600 text-white p-2 rounded-md hover:accent-orange-600 transition">
-                        Giriş Yap
+                        Log in
                     </button>
                 </form>
                 <div className="text-sm text-center text-gray-600 mt-4">
-                    Hesabın yok mu?{" "}
+                    Don't have any account?{" "}
                     <a href="/register" className="text-orange-600 hover:underline font-medium">
-                        Kayıt ol
+                        Sign up
                     </a>
                 </div>
             </div>

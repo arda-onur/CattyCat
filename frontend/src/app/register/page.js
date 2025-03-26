@@ -4,29 +4,29 @@ import { useState } from "react";
 
 export default function RegisterPage() {
     const [email, setEmail] = useState("");
-    const [sifre, setSifre] = useState("");
-    const [resifre, setreSifre] = useState("");
-    const [mesaj, setMesaj] = useState("");
+    const [password, setPassword] = useState("");
+    const [repassword, setrepassword] = useState("");
+    const [message, setMessage] = useState("");
 
 
 
     const handleRegister = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/register", {
+            const response = await fetch("http://localhost:8080/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     email: email,
-                    password: sifre,
-                    repassword: resifre
+                    password: password,
+                    repassword: repassword
                 }),
             });
 
             const result = await response.text();
-            setMesaj(result);
+            setMessage(result);
         } catch (err) {
-            console.error("Hata:", err);
-            setMesaj("Sunucuya bağlanılamadı.");
+            console.error("Error:", err);
+            setMessage("Failed to connect to the server.");
         }
     };
 
@@ -40,32 +40,32 @@ export default function RegisterPage() {
                 style={{ borderColor: "orange"}}
             />
             <div className="w-full max-w-md bg-white p-8 rounded shadow-md">
-                <h2 className="text-2xl font-bold text-center mb-6 text-orange-600">Kayıt Ol</h2>
+                <h2 className="text-2xl font-bold text-center mb-6 text-orange-600">Signup</h2>
 
                 <div className="space-y-4">
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
-                            E-posta
+                            E-mail
                         </label>
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="mt-1 w-full border border-gray-300 rounded p-2"
-                            placeholder="mail@mail.com"
+                            placeholder="yourmail@mail.com"
                             required
                         />
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
-                            Şifre
+                            Password
                         </label>
                         <input
                             type="password"
-                            value={sifre}
-                            onChange={(e) => setSifre(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             className="mt-1 w-full border border-gray-300 rounded p-2"
                             placeholder="********"
                             required
@@ -73,12 +73,12 @@ export default function RegisterPage() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">
-                            Şifre Tekrarı
+                          Re-Password
                         </label>
                         <input
                             type="password"
-                            value={resifre}
-                            onChange={(e) => setreSifre(e.target.value)}
+                            value={repassword}
+                            onChange={(e) => setrepassword(e.target.value)}
                             className="mt-1 w-full border border-gray-300 rounded p-2"
                             placeholder="********"
                             required
@@ -89,17 +89,17 @@ export default function RegisterPage() {
                         onClick={handleRegister}
                         className="w-full bg-orange-600 text-white p-2 rounded hover:bg-orange-700 transition"
                     >
-                        Kayıt Ol
+                        Sign up
                     </button>
 
-                    {mesaj && (
-                        <p className="text-center text-sm text-orange-600 mt-4">{mesaj}</p>
+                    {message && (
+                        <p className="text-center text-sm text-orange-600 mt-4">{message}</p>
                     )}
 
                     <div className="text-sm text-center mt-4">
-                        Zaten hesabın var mı?{" "}
+                        Already have an account?{" "}
                         <a href="/login" className="text-orange-600 hover:underline">
-                            Giriş Yap
+                            Log in
                         </a>
                     </div>
                 </div>
