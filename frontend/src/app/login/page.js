@@ -13,11 +13,14 @@ export default function LoginPage() {
     const [message, setMessage] = useState("");
 
     const images = [
-        "erkekmavilogin.jpg",
-        "kadınssiyahayakkabı.jpg",
-        "siyaherkeklogin.png",
-        "kıvırcıkkadın.jpg",
-        "doubleçiftlogin.png",
+        "cat1.jpg",
+        "cat2.jpg",
+        "cat3.jpg",
+        "cat4.jpg",
+        "cat5.jpg",
+        "cat6.jpg",
+        "cat7.jpg",
+        "cat8.jpg",
     ];
 
     const handleLogin = async () => {
@@ -66,7 +69,7 @@ export default function LoginPage() {
                             <img
                                 src={`/${src}`}
                                 alt={`slide-${i}`}
-                                className="w-27 object-cover rounded-lg shadow-md"
+                                className="w-35 object-cover rounded-lg shadow-md"
                             />
                         </SwiperSlide>
                     ))}
