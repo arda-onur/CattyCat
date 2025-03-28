@@ -5,6 +5,7 @@ public class User {
     private final String email;
     private final String password;
     private final Address address;
+    private final Role role;
 
     public User(final UserId id, final String email, final String password) {
         if (email.isBlank() || password.isBlank())
@@ -16,5 +17,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.address = null;
+        this.role = Role.USER;
     }
 }
