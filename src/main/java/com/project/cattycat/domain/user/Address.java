@@ -2,8 +2,10 @@ package com.project.cattycat.domain.user;
 
 import jakarta.persistence.Embeddable;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @EqualsAndHashCode
+@Getter
 public class Address{
     private final String country;
     private final String city;
