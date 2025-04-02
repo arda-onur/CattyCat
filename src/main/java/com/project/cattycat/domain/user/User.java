@@ -19,4 +19,24 @@ public class User {
         this.address = null;
         this.role = Role.USER;
     }
+
+    public UserId getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Role getRole() {
+        return role;
+    }
 }
