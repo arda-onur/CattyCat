@@ -7,5 +7,4 @@ import java.util.UUID;
 
 public interface SpringDataUserRepository extends JpaRepository<UserEntity,UUID> {
     Optional<UserEntity> findByEmail(String email);
-
 }
