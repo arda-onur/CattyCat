@@ -3,6 +3,7 @@ package com.project.cattycat.infrastructure.persistence.Entity.User;
 import com.project.cattycat.domain.user.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
