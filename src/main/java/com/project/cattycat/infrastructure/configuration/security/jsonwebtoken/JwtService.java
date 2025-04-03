@@ -1,7 +1,6 @@
 package com.project.cattycat.infrastructure.configuration.security.jsonwebtoken;
 
-import com.project.cattycat.infrastructure.persistence.Entity.User.JpaUserRepository;
-import com.project.cattycat.infrastructure.persistence.Entity.User.UserRepositoryImpl;
+import com.project.cattycat.domain.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,7 +8,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -34,11 +32,11 @@ public class JwtService {
     }
 
 
-    public String generateToken(Map<String, Object> claims, UserDetails userDetails) {
+    public String generateToken(Map<String, Object> claims, User userDetails) {
         return Jwts
                 .builder()
                 .setClaims(claims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(userDetails.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60  *24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
