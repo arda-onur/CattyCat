@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthenticationContoller {
 
     private final AuthenticationService authenticationService;
      @RequestMapping("/register")
-    public ResponseEntity<String> register(@RequestBody @Valid RegisterRequestDTO registerRequestDTO){
-        return ResponseEntity.ok().body(authenticationService.register(registerRequestDTO));
+    public ResponseEntity<String> register(@RequestBody @Valid RegisterRequestDTO registerRequestDTO)  {
+         String token = authenticationService.register(registerRequestDTO);
+        return ResponseEntity.ok().body(token);
     }
 }
 
