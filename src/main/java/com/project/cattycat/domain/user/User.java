@@ -1,5 +1,8 @@
 package com.project.cattycat.domain.user;
 
+import lombok.Builder;
+
+@Builder
 public class User {
     private final UserId id;
     private final String email;
@@ -7,7 +10,7 @@ public class User {
     private final Address address;
     private final Role role;
 
-    public User(final UserId id, final String email, final String password) {
+    public User(final UserId id, final String email, final String password,final Role role) {
         if (email.isBlank() || password.isBlank())
             throw new IllegalArgumentException("Email or password cannot be blank.");
         if (id == null)
@@ -17,7 +20,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.address = null;
-        this.role = Role.USER;
+        this.role = role;
     }
 
     public UserId getId() {
